@@ -1,0 +1,22 @@
+version: "3"
+services:
+  elasticsearch:
+    image: elasticsearch
+    volumes:
+      - ./data:/usr/share/elasticsearch/data elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - docker_elk
+  kibana:
+    image: kibana
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    networks:
+      - docker_elk
+networks:
+  docker_elk:
+    driver: bridge
