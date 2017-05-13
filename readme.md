@@ -13,15 +13,6 @@ All these components run in it's docker container and we need a nginx proxy beca
 # Installation
 
 ```bash
-docker pull elasticsearch
-docker pull kibana
-docker run --name fp_elasticsearch -p 9200:9200 -p 9300:9300 -d -v "$PWD/data":/usr/share/elasticsearch/data elasticsearch
-docker run --name fp_kibana -e ELASTICSEARCH_URL=http://localhost:9200 -p 5601:5601 -d kibana
-```
-
-# Installation using docker-compose:
-
-```bash
   docker-compose up -d
 ```
 
@@ -33,3 +24,13 @@ docker run --name fp_kibana -e ELASTICSEARCH_URL=http://localhost:9200 -p 5601:5
 curl localhost:9200/_cat/indices?v
 curl localhost:9200/test_data
 ```
+
+# About
+
+## The Schema
+
+The schema of the database is defined in NodeJS using [node-schema-object](https://www.npmjs.com/package/node-schema-object) that lets us ensure that users cannot insert random objects to the database
+
+## The insertion
+
+We'll use the [node elasticsearch connector](https://www.npmjs.com/package/elasticsearch) to help us insert the data into the database.
