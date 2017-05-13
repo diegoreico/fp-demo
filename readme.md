@@ -1,3 +1,15 @@
+# What's this?
+
+This is a server-client app that has the following components:
+
+- __Front end website:__ Gets all information about the user as possible without any dialog, makes a fingerprint and send that information to the backend
+- __Backend:__
+  - __Nodejs:__ Ensures that the format is correct and stores the data into an elasticsearch database
+  - __Elasticsearch:__ Is our database choice
+  - __Kibana:__ Provides a front-end to see statistics and queries.
+
+All these components run in it's docker container and we need a nginx proxy because kibana don't support authentication and we don't want to expose the statistics dashboard to the mases.
+
 # Installation
 
 ```bash
@@ -7,10 +19,17 @@ docker run --name fp_elasticsearch -p 9200:9200 -p 9300:9300 -d -v "$PWD/data":/
 docker run --name fp_kibana -e ELASTICSEARCH_URL=http://localhost:9200 -p 5601:5601 -d kibana
 ```
 
-## Better using docker-compose
+# Installation using docker-compose:
 
 ```bash
   docker-compose up -d
-  curl localhost:9200/_cat/indices?v
-  curl localhost:9200/test_data
+```
+
+# Testing everything is ok:
+
+## Testing elasticsearch
+
+```bash
+curl localhost:9200/_cat/indices?v
+curl localhost:9200/test_data
 ```
