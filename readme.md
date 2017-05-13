@@ -1,3 +1,7 @@
+<center><img src="./image/fingerprint.png"></center>
+
+---
+
 # What's this?
 
 This is a server-client app that has the following components:
@@ -10,13 +14,17 @@ This is a server-client app that has the following components:
 
 All these components run in it's docker container and we need a nginx proxy because kibana don't support authentication and we don't want to expose the statistics dashboard to the mases.
 
-# Installation
+---
+
+# Running the thing
 
 ```bash
   docker-compose up -d
 ```
 
-# Testing everything is ok:
+---
+
+# Using the thing
 
 ## Testing elasticsearch
 
@@ -24,6 +32,8 @@ All these components run in it's docker container and we need a nginx proxy beca
 curl localhost:9200/_cat/indices?v
 curl localhost:9200/test_data
 ```
+
+---
 
 # About
 
