@@ -4,17 +4,26 @@ services:
     image: elasticsearch
     volumes:
       - ./data:/usr/share/elasticsearch/data elasticsearch
-    ports:
-      - "9200:9200"
-      - "9300:9300"
     networks:
       - docker_elk
   kibana:
     image: kibana
-    ports:
-      - "5601:5601"
     links:
       - elasticsearch
+    networks:
+      - docker_elk
+  node:
+    image:
+    links:
+      - elasticsearch
+    networks:
+      - docker_elk
+  nginx:
+    image:
+    ports: "1337:1337"
+    links:
+      - kibana
+      - node
     networks:
       - docker_elk
 networks:

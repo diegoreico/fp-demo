@@ -67,7 +67,7 @@ router.post('/push', function (req, res, next) {
     console.log('-- Pushing data: '+fingerprint.result);
     // console.log(util.inspect(JSON.parse(req.body.fingerprint),{depth: null}));
     // console.log('   Parsed: ');
-    // console.log(fingerprint.toObject());
+    console.log(fingerprint.toObject());
 
     if (!Object.keys(fingerprint.toObject()).length){
         console.log('   Empty');
@@ -76,9 +76,10 @@ router.post('/push', function (req, res, next) {
     } else {
         console.log('   Trying to insert');
 
+        //TODO: Trapallada N#1, el hash necesitava ser un long no?
         var id = 0;
         for (var c in fingerprint.result){
-            // console.log(fingerprint.result[c] + ' - ' + fingerprint.result[c].charCodeAt(0));
+            // console.log(fingerprint.result[c] + ' -> ' + fingerprint.result[c].charCodeAt(0));
             id += fingerprint.result[c].charCodeAt(0);
         }
 

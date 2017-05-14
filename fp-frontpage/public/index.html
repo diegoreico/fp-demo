@@ -56,6 +56,8 @@
 
                 document.body.appendChild(form);
                 form.submit();
+
+                console.log(data2send)
             }
 
             new Fingerprint2().get(function(result, components){
@@ -70,14 +72,26 @@
                     $( "body" ).append('<div class="row"><div class="col s12 m12"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">' + components[el].key + '</span><p style="word-wrap:break-word;">' + components[el].value + '</p></div></div></div></div>');
                 }
 
-                // TODO: Send data
                 var data = {};
                 data.location = window.location.href;
                 data.fingerprint={};
                 data.fingerprint.result = result;
-                data.fingerprint.components = components;
+                data.fingerprint.components = {};
 
-                console.log(data);
+                //TODO: Trapallada máxima
+                for (var component in components){
+                    if (components[component].key === "touch_support"){
+                        var touch = components[component].value;
+
+                        for(el in touch){
+                            if(touch[el] === false) touch[el] = 0;
+                        }
+
+                    }
+                    data.fingerprint.components[component] = components[component];
+                }
+
+//                console.log(data);
                 sendPost(data);
 
                 return Promise.resolve();
