@@ -51,7 +51,7 @@
                 var input2 = document.createElement("input");
                 input2.type = "hidden";
                 input2.name = "fingerprint";
-                input2.value = data2send.fingerprint;
+                input2.value = JSON.stringify(data2send.fingerprint);
                 form.appendChild(input2);
 
                 document.body.appendChild(form);

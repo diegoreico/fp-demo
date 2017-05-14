@@ -63,21 +63,38 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/push', function (req, res, next) {
-    var fingerprint = new Fingerprint(req.body.fingerprint);
-    console.log('-- Pushing data:');
-    console.log(req.body.fingerprint);
+    var fingerprint = new Fingerprint(JSON.parse(req.body.fingerprint));
+    console.log('-- Pushing data: '+fingerprint.result);
+    // console.log(util.inspect(JSON.parse(req.body.fingerprint),{depth: null}));
+    // console.log('   Parsed: ');
+    // console.log(fingerprint.toObject());
 
     if (!Object.keys(fingerprint.toObject()).length){
+        console.log('   Empty');
         // Empty
-        return res.json({status: 'invalid format'})
+        return res.status(400).json({status: 'invalid format'})
     } else {
+        console.log('   Trying to insert');
+
+        var id = 0;
+        for (var c in fingerprint.result){
+            // console.log(fingerprint.result[c] + ' - ' + fingerprint.result[c].charCodeAt(0));
+            id += fingerprint.result[c].charCodeAt(0);
+        }
+
         client.index({
             index: index,
             type: index,
-            body: fingerprint.toObject()
+            body: fingerprint.toObject(),
+            id: id
         }, function(err, resp, status){
-            if (err) return next(err);
-            return res.json({status: 'object inserted', data: fingerprint, resp: resp})
+            if (err) {
+                console.log(err);
+                return next(err);
+            } else {
+                console.log('   All green');
+                return res.json({status: 'object inserted', data: fingerprint, resp: resp})
+            }
         });
     }
 });

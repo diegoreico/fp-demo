@@ -6,12 +6,15 @@ var SchemaObject = require('node-schema-object');
 
 var NotEmptyString = {type: String, minLength: 1};
 
+var Component = new SchemaObject({
+   key: NotEmptyString,
+   value: 'any'
+});
+
 // TODO: Change to the real data schema
 var Fingerprint = new SchemaObject({
-    firstName: NotEmptyString,
-    lastName: NotEmptyString,
-    birthDate: Date,
-    bool: Boolean
+    components: [Component],
+    result: NotEmptyString
 });
 
 module.exports = Fingerprint;
