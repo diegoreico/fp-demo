@@ -46,12 +46,15 @@ The front-end is not so pretty but it should provide you some info about your br
 
 <center><img src="./image/frontend.png"></center>
 
-## Testing elasticsearch
+## dashboard
 
+Default password is __admin__ and user is __admin__
+
+Change by doing:
 ```bash
-curl localhost:9200/_cat/indices?v
-curl localhost:9200/test_data
+htcpasswd -c passwd <username>
 ```
+__Overwrite the file before creating the containers__
 
 ---
 
@@ -78,6 +81,9 @@ We'll use the [node elasticsearch connector](https://www.npmjs.com/package/elast
 # Helpful commands
 
 ```bash
+# Delete dead
 docker rm $(docker ps --all -q -f status=dead)
+# When a container mountpoint dies
 sudo umount /var/lib/docker/devicemapper/mnt/9769dbe9e21d2aba6d2b08e79e3a67534ff8d69b66a93ae554a519cdc9ea7027
+rm /etc/nginx/conf.d/default.conf && nano /etc/nginx/conf.d/default.conf
 ```

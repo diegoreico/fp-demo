@@ -17,7 +17,7 @@ var client = new elasticsearch.Client( {
 });
 var index = 'fp_data';
 
-function setup(){
+function setup(i){
     client.indices.create({
         index: index
     }, function(err, resp, status){
@@ -26,7 +26,13 @@ function setup(){
                 if (!err && resp) {
                     console.log('[debug] Index already exists');
                 } else {
-                    throw new Error('Cannot create index')
+                    //TODO: Trapallada #4 - If first time fails try again!
+                    if (!i || i < 10){
+                        console.log('[error] Can\'t create index');
+                        setup(1)
+                    } else {
+                        throw new Error('Cannot create index')
+                    }
                 }
                 })
         } else {
