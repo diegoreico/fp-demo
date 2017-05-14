@@ -10,8 +10,9 @@ var Fingerprint = require('../schemas/fingerprint');
 var elasticsearch = require('elasticsearch');
 
 var client = new elasticsearch.Client( {
-    host: 'localhost:9200',
+    host: 'elasticsearch:9200',
     // For debugging purposes
+    // host: 'localhost:9200',
     // log: 'trace'
 });
 var index = 'fp_data';
