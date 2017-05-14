@@ -12,15 +12,23 @@ This is a server-client app that has the following components:
   - __Elasticsearch:__ Is our database choice
   - __Kibana:__ Provides a front-end to see statistics and queries.
 
-All these components run in it's docker container and we need a nginx proxy because kibana don't support authentication and we don't want to expose the statistics dashboard to the mases.
+All these components run in it's docker container and we need a __nginx proxy__ because kibana don't support authentication and we don't want to expose the statistics dashboard to the mases.
 
 ---
 
 # Running the thing
 
 ```bash
+  # First build the image because docker-compose should be only for orchestating
+  docker build fp-demo -t fp-demo
   docker-compose up -d
 ```
+
+ ## Uninstall
+
+ ```bash
+  docker-compose down
+ ```
 
 ---
 
@@ -56,3 +64,20 @@ The schema of the database is defined in NodeJS using [node-schema-object](https
 ## The insertion
 
 We'll use the [node elasticsearch connector](https://www.npmjs.com/package/elasticsearch) to help us insert the data into the database.
+
+---
+
+# Todo
+
+1. Delete all of the "trangalladas"
+2. Using docker-compose to truly orchestate the thing:
+  - fpdemo_node has a slep in order to wait for elasticsearch
+
+---
+
+# Helpful commands
+
+```bash
+docker rm $(docker ps --all -q -f status=dead)
+sudo umount /var/lib/docker/devicemapper/mnt/9769dbe9e21d2aba6d2b08e79e3a67534ff8d69b66a93ae554a519cdc9ea7027
+```

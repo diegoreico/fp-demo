@@ -1,0 +1,7 @@
+FROM node:4.4
+
+ADD . /opt/fp-demo
+RUN cd /opt/fp-demo && npm install
+RUN npm install -g forever
+EXPOSE 1337
+ENTRYPOINT /bin/sh -c 'sleep 5 && cd /opt/fp-demo && forever app.js'

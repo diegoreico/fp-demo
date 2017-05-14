@@ -13,14 +13,21 @@ services:
     networks:
       - docker_elk
   node:
-    image:
+    image: fp-demo
+    ports:
+      - "1337:1337"
     links:
       - elasticsearch
+      - kibana
     networks:
       - docker_elk
+    depends_on:
+      - elasticsearch
+      - kibana
   nginx:
-    image:
-    ports: "1337:1337"
+    image: nginx
+    ports:
+      - "8080:80"
     links:
       - kibana
       - node
