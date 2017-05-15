@@ -38,7 +38,7 @@ All these components run in it's docker container and we need a __nginx proxy__ 
 
 You should access to the front-end in the following url:
 
-[http://localhost:1337](http://localhost:1337)
+[http://localhost:1337/node/](http://localhost:1337/node/)
 
 Or you can see a working demo on [here](http://publicurl.com).
 
@@ -47,6 +47,10 @@ The front-end is not so pretty but it should provide you some info about your br
 <center><img src="./image/frontend.png"></center>
 
 ## dashboard
+
+The URL is:
+
+[http://localhost:1337/kibana/](http://localhost:1337/kibana/)
 
 Default password is __admin__ and user is __admin__
 
