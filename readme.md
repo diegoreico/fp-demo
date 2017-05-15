@@ -2,6 +2,10 @@
 
 ---
 
+# Demo
+
+This repo is autobuilded with jenkins
+
 # What's this?
 
 This is a server-client app that has the following components:
