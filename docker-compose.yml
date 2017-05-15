@@ -28,7 +28,7 @@ services:
       - ./fp-nginx/passwd:/etc/nginx/passwd
       - ./fp-nginx/default.conf:/etc/nginx/conf.d/default.conf
   node:
-   image: fp-demo
+   image: diegoreico/fp-demo
    links:
      - elasticsearch
      - kibana
