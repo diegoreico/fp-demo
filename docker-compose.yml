@@ -1,22 +1,21 @@
-version: "3"
+version: "2"
 services:
   elasticsearch:
     image: elasticsearch
     networks:
       - docker_elk
-    ports:
-      - "9200:9200"
-      - "9300:9300"
   kibana:
     image: kibana
     links:
       - elasticsearch
+    volumes:
+      - ./fp-kibana/kibana.yml:/etc/kibana/kibana.yml
     networks:
       - docker_elk
-    ports:
-      - "5601:5601"
   nginx:
     image: nginx
+    # Debug nginx
+    # command: sleep infinity
     ports:
       - "1337:80"
     links:
@@ -34,9 +33,6 @@ services:
      - kibana
    networks:
      - docker_elk
-   depends_on:
-     - elasticsearch
-     - kibana
 networks:
   docker_elk:
     driver: bridge

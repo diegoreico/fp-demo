@@ -2,10 +2,6 @@
 
 ---
 
-# Demo
-
-
-
 # What's this?
 
 This is a server-client app that has the following components:
@@ -24,7 +20,7 @@ All these components run in it's docker container and we need a __nginx proxy__ 
 
 ```bash
   # First build the image because docker-compose should be only for orchestating
-  docker build fp-demo -t fp-demo
+  docker build fp-demo -t diegoreico/fp-demo
   docker-compose up -d
 ```
 
@@ -90,4 +86,9 @@ docker rm $(docker ps --all -q -f status=dead)
 # When a container mountpoint dies
 sudo umount /var/lib/docker/devicemapper/mnt/9769dbe9e21d2aba6d2b08e79e3a67534ff8d69b66a93ae554a519cdc9ea7027
 rm /etc/nginx/conf.d/default.conf && nano /etc/nginx/conf.d/default.conf
+# Delete and re-run containters
+docker-compose down && docker-compose up -d --force-recreate
+# Reset nginx
+apt-get update && apt-get install -y procps
+killall nginx && sleep 1 && nginx
 ```
