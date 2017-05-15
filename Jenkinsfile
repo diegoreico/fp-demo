@@ -11,7 +11,8 @@ docker push diegoreico/fp-demo'''
       steps {
         sh '''ssh mysalsa@52.232.80.32 "docker pull diegoreico/fp-demo"
 scp ./docker-compose.yml mysalsa@52.232.80.32:/home/mysalsa/docker-compose.yml'''
-        sh '''docker-compose down
+        sh '''ls
+docker-compose down
 docker-compose rm
 docker-compose up -d --force-recreate'''
       }
