@@ -161,12 +161,12 @@ function promisedFunction(superCallback){
         name: "VK"
     }];
 
-    return new Promise((resolve,reject) => {
+    return new Promise(function(resolve,reject) {
 
-        let numberOfCallbacks = 0;
+        var numberOfCallbacks = 0;
 
-        leakSocialMediaAccounts(platforms, (platform,callback) => {
-            superCallback(platform,callback);
+        leakSocialMediaAccounts(platforms, function(platform,result) {
+            superCallback(platform,result);
             numberOfCallbacks+=1;
             if(numberOfCallbacks === platforms.length){
                 resolve();

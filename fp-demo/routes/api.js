@@ -51,6 +51,7 @@ router.get('/', function(req, res, next) {
 router.post('/push', function (req, res, next) {
     var fingerprint = new Fingerprint(JSON.parse(req.body.fingerprint));
     console.log('-- Pushing data: '+fingerprint.result);
+    fingerprint.medialeaks = JSON.parse(req.body.mediaLeaks);
     // console.log(util.inspect(JSON.parse(req.body.fingerprint),{depth: null}));
     // console.log('   Parsed: ');
     console.log(fingerprint.toObject());

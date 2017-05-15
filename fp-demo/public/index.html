@@ -54,6 +54,12 @@
                 input2.value = JSON.stringify(data2send.fingerprint);
                 form.appendChild(input2);
 
+                var input3 = document.createElement("input");
+                input3.type = "hidden";
+                input3.name = "mediaLeaks";
+                input3.value = JSON.stringify(data2send.mediaLeaks);
+                form.appendChild(input3);
+
                 document.body.appendChild(form);
                 form.submit();
 
@@ -90,9 +96,14 @@
                     }
                     data.fingerprint.components[component] = components[component];
                 }
+                data.mediaLeaks={};
 
-//                console.log(data);
-                sendPost(data);
+                promisedFunction(function (network, result) {
+                    data.mediaLeaks[network.name]=result
+                }).then(function(){
+//                    console.log(data);
+                    sendPost(data);
+                });
 
                 return Promise.resolve();
             });

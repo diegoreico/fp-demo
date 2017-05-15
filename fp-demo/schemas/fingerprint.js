@@ -9,6 +9,7 @@ var NotEmptyString = {type: String, minLength: 1};
 // TODO: Change to the real data schema
 var Fingerprint = new SchemaObject({
     components: 'any',
+    medialeaks: 'any',
     result: NotEmptyString
 });
 
