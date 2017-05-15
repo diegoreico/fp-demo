@@ -12,7 +12,7 @@ var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client( {
     // host: 'elasticsearch:9200',
     // For debugging purposes
-    host: 'localhost:9200',
+    host: process.env.DATABASE || 'elasticsearch:9200',
     // log: 'trace'
 });
 var index = 'fp_data';

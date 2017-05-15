@@ -3,6 +3,7 @@
     <envs>
       <env name="DEBUG" value="fp-frontpage:*" />
       <env name="PORT" value="3000" />
+      <env name="DATABASE" value="localhost:9200" />
     </envs>
     <browser url="http://localhost:3000/" />
     <EXTENSION ID="com.jetbrains.nodejs.remote.docker.NodeJSDockerRunConfigurationExtension">
