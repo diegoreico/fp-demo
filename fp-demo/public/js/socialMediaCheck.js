@@ -2,8 +2,24 @@
  * Created by diegoreico on 9/05/17.
  */
 
-var leakSocialMediaAccounts = function(callback) {
-    var platforms = [{
+
+var leakSocialMediaAccounts = function(platforms,callback) {
+
+    platforms.forEach(function(network) {
+        var img = document.createElement('img');
+        img.src = network.domain + network.redirect;
+        img.onload = function() {
+            callback(network, true);
+        };
+        img.onerror = function() {
+            callback(network, false);
+        };
+    });
+};
+
+function promisedFunction(superCallback){
+
+    let platforms = [{
         domain: "https://squareup.com",
         redirect: "/login?return_to=%2Ffavicon.ico",
         name: "Square"
@@ -145,15 +161,16 @@ var leakSocialMediaAccounts = function(callback) {
         name: "VK"
     }];
 
-    platforms.forEach(function(network) {
-        var img = document.createElement('img');
-        img.src = network.domain + network.redirect;
-        img.onload = function() {
-            callback(network, true);
-        };
-        img.onerror = function() {
-            callback(network, false);
-        };
-    });
-};
+    return new Promise((resolve,reject) => {
 
+        let numberOfCallbacks = 0;
+
+        leakSocialMediaAccounts(platforms, (platform,callback) => {
+            superCallback(platform,callback);
+            numberOfCallbacks+=1;
+            if(numberOfCallbacks === platforms.length){
+                resolve();
+            }
+        });
+    });
+}
