@@ -19,7 +19,7 @@ var leakSocialMediaAccounts = function(platforms,callback) {
 
 function promisedFunction(superCallback){
 
-    let platforms = [{
+    var platforms = [{
         domain: "https://squareup.com",
         redirect: "/login?return_to=%2Ffavicon.ico",
         name: "Square"

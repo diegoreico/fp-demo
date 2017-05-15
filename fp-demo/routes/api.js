@@ -52,9 +52,10 @@ router.post('/push', function (req, res, next) {
     var fingerprint = new Fingerprint(JSON.parse(req.body.fingerprint));
     console.log('-- Pushing data: '+fingerprint.result);
     fingerprint.medialeaks = JSON.parse(req.body.mediaLeaks);
-    // console.log(util.inspect(JSON.parse(req.body.fingerprint),{depth: null}));
-    // console.log('   Parsed: ');
-    console.log(fingerprint.toObject());
+    // console.log(fingerprint.components.js_fonts.length);
+    // TODO: Trapallada - Count fonts here because we don't know how to do it in kibana
+    fingerprint.components['js_fonts_count'] = fingerprint.components.js_fonts.length;
+    // console.log(fingerprint.components);
 
     if (!Object.keys(fingerprint.toObject()).length){
         console.log('   Empty');
@@ -73,8 +74,9 @@ router.post('/push', function (req, res, next) {
         client.index({
             index: index,
             type: index,
-            body: fingerprint.toObject(),
-            id: id
+            body: fingerprint.toObject()
+            // TODO: This let's collision happen
+            // id: id
         }, function(err, resp, status){
             if (err) {
                 console.log(err);

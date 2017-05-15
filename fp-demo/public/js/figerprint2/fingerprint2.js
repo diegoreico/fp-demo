@@ -72,7 +72,7 @@
       keys = this.pluginsKey(keys);
       keys = this.canvasKey(keys);
       keys = this.webglKey(keys);
-      keys = this.adBlockKey(keys);
+      // keys = this.adBlockKey(keys);
       keys = this.hasLiedLanguagesKey(keys);
       keys = this.hasLiedResolutionKey(keys);
       keys = this.hasLiedOsKey(keys);

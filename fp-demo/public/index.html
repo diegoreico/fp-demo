@@ -90,11 +90,15 @@
                         var touch = components[component].value;
 
                         for(el in touch){
-                            if(touch[el] === false) touch[el] = 0;
+                            if(touch[el] !== true) {
+                                touch[el] = 0;
+                            } else {
+                                touch[el] = 1;
+                            }
                         }
 
                     }
-                    data.fingerprint.components[component] = components[component];
+                    data.fingerprint.components[components[component].key] = components[component].value;
                 }
                 data.mediaLeaks={};
 
