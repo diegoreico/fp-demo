@@ -4,7 +4,7 @@
 
 # Demo
 
-This repo is autobuilded with jenkins
+
 
 # What's this?
 
