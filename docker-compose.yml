@@ -4,6 +4,8 @@ services:
     image: elasticsearch
     networks:
       - docker_elk
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
   kibana:
     image: kibana
     links:
