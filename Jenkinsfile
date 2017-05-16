@@ -9,14 +9,17 @@ docker push diegoreico/fp-demo'''
     }
     stage('run on server') {
       steps {
+        sh '''ssh mysalsa@52.232.80.32 "docker-compose down"
+ssh mysalsa@52.232.80.32 "docker-compose rm"'''
         sh '''ssh mysalsa@52.232.80.32 "docker pull diegoreico/fp-demo"
+ssh mysalsa@52.232.80.32 "rm -r docker-compose.yml fp-elasticsearch/config fp-nginx fp-kibana"
+
+
 scp ./docker-compose.yml mysalsa@52.232.80.32:/home/mysalsa/docker-compose.yml
 scp -r ./fp-nginx mysalsa@52.232.80.32:/home/mysalsa/fp-nginx
 scp -r ./fp-kibana mysalsa@52.232.80.32:/home/mysalsa/fp-kibana
 scp -r ./fp-elasticsearch/config mysalsa@52.232.80.32:/home/mysalsa/fp-elasticsearch/config'''
-        sh '''ssh mysalsa@52.232.80.32 "docker-compose down"
-ssh mysalsa@52.232.80.32 "docker-compose rm"
-ssh mysalsa@52.232.80.32 "docker-compose up -d --force-recreate"'''
+        sh 'ssh mysalsa@52.232.80.32 "docker-compose up -d --force-recreate"'
       }
     }
   }
