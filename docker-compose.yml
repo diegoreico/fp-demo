@@ -2,6 +2,9 @@ version: "2"
 services:
   elasticsearch:
     image: elasticsearch
+    volumes:
+      - "$PWD/config":/usr/share/elasticsearch/config
+      - "$PWD/esdata":/usr/share/elasticsearch/data
     networks:
       - docker_elk
     environment:
