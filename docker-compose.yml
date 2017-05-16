@@ -3,8 +3,8 @@ services:
   elasticsearch:
     image: elasticsearch
     volumes:
-      - "$PWD/config":/usr/share/elasticsearch/config
-      - "$PWD/esdata":/usr/share/elasticsearch/data
+      - ./fp-elasticsearch/config:/usr/share/elasticsearch/config
+      - ./fp-elasticsearch/data:/usr/share/elasticsearch/data
     networks:
       - docker_elk
     environment:
