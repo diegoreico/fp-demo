@@ -72,7 +72,7 @@
       keys = this.pluginsKey(keys);
       keys = this.canvasKey(keys);
       keys = this.webglKey(keys);
-      // keys = this.adBlockKey(keys);
+      keys = this.adBlockKey(keys);
       keys = this.hasLiedLanguagesKey(keys);
       keys = this.hasLiedResolutionKey(keys);
       keys = this.hasLiedOsKey(keys);
@@ -91,8 +91,19 @@
                       value = pair.value.join(";");
                   }
 
-                  if(pair.key !== "IP")
+                  if(pair.key === "Media Devices") {
+                      for (var j = 0; j < pair.value.length; j++) {
+
+                          if (pair.value[j].deviceId !== "default")
+                              pair.value[j].deviceId = "other"
+                          if (pair.value[j].deviceId !== "default")
+                              pair.value[j].deviceId = "other"
+                      }
+                  }
+
+                  if(pair.key !== "IP" && pair.key !== "adblock")
                     values.push(value);
+
               });
               var murmur = that.x64hash128(values.join("~~~"), 31);
               return done(murmur, newKeys);
@@ -278,7 +289,15 @@
     },
     mediaDevices: function(keys){
         return this.getMediaDevices().then(function(mediaDevices) {
-            keys.push({key: "Media Devices", value: JSON.stringify(mediaDevices)});
+
+            var copyMedia = {};
+
+            for(var media in mediaDevices){
+                copyMedia[media] = mediaDevices[media];
+            }
+
+            keys.push({key: "Media Devices", value: copyMedia});
+            keys.push({key: "Number of Media Devices", value: mediaDevices.length});
             return keys;
         });
 

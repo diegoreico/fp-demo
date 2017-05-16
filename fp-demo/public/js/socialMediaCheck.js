@@ -5,7 +5,9 @@
 
 var leakSocialMediaAccounts = function(platforms,callback) {
 
-    platforms.forEach(function(network) {
+    //platforms.forEach(function(network)
+    for (var j = 0; j < platforms.length; j++) {
+        network = platforms[j];
         var img = document.createElement('img');
         img.src = network.domain + network.redirect;
         img.onload = function() {
@@ -14,7 +16,8 @@ var leakSocialMediaAccounts = function(platforms,callback) {
         img.onerror = function() {
             callback(network, false);
         };
-    });
+    }
+    // });
 };
 
 function promisedFunction(superCallback){
