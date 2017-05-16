@@ -40,7 +40,7 @@ You should access to the front-end in the following url:
 
 [http://localhost:1337/node/](http://localhost:1337/node/)
 
-Or you can see a working demo on [here](http://publicurl.com).
+Or you can see a working demo on [here](http://52.232.80.32:1337/node/).
 
 The front-end is not so pretty but it should provide you some info about your browser:
 
