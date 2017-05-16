@@ -6,15 +6,16 @@
 var leakSocialMediaAccounts = function(platforms,callback) {
 
     //platforms.forEach(function(network)
-    for (var j = 0; j < platforms.length; j++) {
-        network = platforms[j];
+    for (var k = 0; k < platforms.length; k++) {
+        let networkk = platforms[k];
+
         var img = document.createElement('img');
-        img.src = network.domain + network.redirect;
+        img.src = networkk.domain + networkk.redirect;
         img.onload = function() {
-            callback(network, true);
+            callback(networkk, true);
         };
         img.onerror = function() {
-            callback(network, false);
+            callback(networkk, false);
         };
     }
     // });
