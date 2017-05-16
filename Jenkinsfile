@@ -11,7 +11,7 @@ docker push diegoreico/fp-demo'''
       steps {
         sh 'echo "hola"'
         sh '''ssh mysalsa@52.232.80.32 "docker pull diegoreico/fp-demo"
-ssh mysalsa@52.232.80.32 "rm -r docker-compose.yml fp-elasticsearch/config fp-nginx fp-kibana"
+ssh mysalsa@52.232.80.32 "sudo rm -r docker-compose.yml fp-elasticsearch/config fp-nginx fp-kibana"
 
 
 scp ./docker-compose.yml mysalsa@52.232.80.32:/home/mysalsa/docker-compose.yml
