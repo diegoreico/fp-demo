@@ -90,7 +90,9 @@
                   if (typeof pair.value.join !== "undefined") {
                       value = pair.value.join(";");
                   }
-                  values.push(value);
+
+                  if(pair.key !== "IP")
+                    values.push(value);
               });
               var murmur = that.x64hash128(values.join("~~~"), 31);
               return done(murmur, newKeys);
