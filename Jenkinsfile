@@ -17,7 +17,7 @@ ssh mysalsa@52.232.80.32 "sudo rm -r docker-compose.yml fp-elasticsearch/config 
 scp ./docker-compose.yml mysalsa@52.232.80.32:/home/mysalsa/docker-compose.yml
 scp -r ./fp-nginx mysalsa@52.232.80.32:/home/mysalsa/fp-nginx
 scp -r ./fp-kibana mysalsa@52.232.80.32:/home/mysalsa/fp-kibana
-scp -r ./fp-elasticsearch mysalsa@52.232.80.32:/home/mysalsa/fp-elasticsearch'''
+scp -r ./fp-elasticsearch mysalsa@52.232.80.32:/home/mysalsa/'''
         sh 'ssh mysalsa@52.232.80.32 "docker-compose up -d --force-recreate"'
       }
     }
