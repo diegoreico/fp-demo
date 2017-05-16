@@ -9,8 +9,7 @@ docker push diegoreico/fp-demo'''
     }
     stage('run on server') {
       steps {
-        sh '''ssh mysalsa@52.232.80.32 "docker-compose down"
-ssh mysalsa@52.232.80.32 "docker-compose rm"'''
+        sh 'echo "hola"'
         sh '''ssh mysalsa@52.232.80.32 "docker pull diegoreico/fp-demo"
 ssh mysalsa@52.232.80.32 "rm -r docker-compose.yml fp-elasticsearch/config fp-nginx fp-kibana"
 
