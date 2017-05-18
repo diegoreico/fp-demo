@@ -19,8 +19,10 @@ All these components run in it's docker container and we need a __nginx proxy__ 
 # Running the thing
 
 ```bash
-  # First build the image because docker-compose should be only for orchestating
+  # [optional]You can use your own version of the fp-demo if you build it like this
   docker build fp-demo -t diegoreico/fp-demo
+  
+  # Then just us docker-compose to create all the containers
   docker-compose up -d
 ```
 
@@ -53,6 +55,8 @@ The URL is:
 [http://localhost:1337/kibana/](http://localhost:1337/kibana/)
 
 Default password is __admin__ and user is __admin__
+
+You can also see a working demo on [here](http://52.232.80.32:1337/kibana/).
 
 Change by doing:
 ```bash
