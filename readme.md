@@ -42,8 +42,6 @@ You should access to the front-end in the following url:
 
 [http://localhost:1337/node/](http://localhost:1337/node/)
 
-Or you can see a working demo on [here](http://52.232.80.32:1337/node/).
-
 The front-end is not so pretty but it should provide you some info about your browser:
 
 <center><img src="./image/frontend.png"></center>
@@ -56,13 +54,13 @@ The URL is:
 
 Default password is __admin__ and user is __admin__
 
-You can also see a working demo on [here](http://52.232.80.32:1337/kibana/).
-
 Change by doing:
 ```bash
 htcpasswd -c passwd <username>
 ```
 __Overwrite the file before creating the containers__
+
+![Panel example image](https://github.com/DiegoReiriz/fp-demo/blob/master/image/Captura%20de%20pantalla%20de%202017-05-30%2018-41-30.png?raw=true)
 
 ---
 
