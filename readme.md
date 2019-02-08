@@ -4,7 +4,9 @@
 
 # What's this?
 
-This is a server-client app that has the following components:
+This is a server-client app that shows your digital browser fingerprint and stores it, so it can be compared with others users browser fingerprint.
+
+The project has the following components:
 
 - __Front end website:__ Gets all information about the user as possible without any dialog, makes a fingerprint and send that information to the backend
 - __Backend:__
