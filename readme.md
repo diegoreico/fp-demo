@@ -4,7 +4,7 @@
 
 # What's this?
 
-This is a server-client app that shows your digital browser fingerprint and stores it, so it can be compared with others users browser fingerprint.
+This is a server-client app that shows your [digital browser fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint) and stores it, so it can be compared with others users browser fingerprint.
 
 The project has the following components:
 
